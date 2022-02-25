@@ -40,6 +40,7 @@ function App(props) {
   const [ data, setState ] = useState({outcome: []});
   const [query, setQuery] = useState('aws');
   const [search, setSearch] = useState('aws');
+  const [realTime, setRealTime] = useState('');
 
   var url = `http://k8s-default-backendi-6566bc7d31-1996723802.ap-northeast-2.elb.amazonaws.com/contents/${search}`
 
@@ -49,8 +50,17 @@ function App(props) {
       setState(result.data);
     };
     fetchData();
+    getRealTime();
     // eslint-disable-next-line
   }, [search]);
+  
+  const getRealTime = () => {
+    const to = setInterval(() => {
+      setRealTime(new Date().toLocalTimeString());
+      return getRealTime();
+    }, 1000);
+    to = undefined;
+  }
   
   return (
     <div className={classes.root}>
@@ -66,7 +76,7 @@ function App(props) {
           >
             EKS DEMO Blog version 1
           </Typography>
-          {new Date().toLocaleTimeString()}
+          {realTime}
         </Toolbar>
       </AppBar>
       <br/>
