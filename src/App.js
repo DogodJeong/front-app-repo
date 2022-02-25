@@ -55,7 +55,7 @@ function App(props) {
   }, [search]);
   
   const getRealTime = () => {
-    const to = setInterval(() => {
+    let to = setInterval(() => {
       setRealTime(new Date().toLocalTimeString());
       return getRealTime();
     }, 1000);
