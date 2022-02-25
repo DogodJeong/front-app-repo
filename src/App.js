@@ -66,7 +66,7 @@ function App(props) {
           >
             EKS DEMO Blog
           </Typography>
-          {new Date().toLocaleTimeString()}
+          test text date {new Date().toLocaleTimeString()}
         </Toolbar>
       </AppBar>
       <br/>
